@@ -1,16 +1,36 @@
 ---
+import { getCollection } from 'astro:content';
 
+const articles = await Astro.glob('../content/articles/*.md');
+const sortedArticles = articles.sort((a, b) => {
+  return new Date(b.frontmatter.published).getTime() - new Date(a.frontmatter.published).getTime();
+});
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>記事一覧 - コーネルノート</title>
+</head>
+<body class="min-h-screen bg-gray-50 p-4 md:p-8">
+  <div class="max-w-4xl mx-auto">
+    <h1 class="text-4xl font-bold mb-8 text-center">記事一覧</h1>
+    
+    <div class="space-y-4">
+      {sortedArticles.map((article) => (
+        <a href={`/articles/${article.file.split('/').pop()?.replace('.md', '')}`} 
+           class="block bg-white p-6 rounded-lg shadow hover:shadow-lg transition-shadow border-l-4 border-blue-500">
+          <h2 class="text-2xl font-bold mb-2">{article.frontmatter.title}</h2>
+          <p class="text-gray-600 text-sm mb-2">
+            投稿日: {article.frontmatter.published}
+            {article.frontmatter.updated && ` | 更新日: ${article.frontmatter.updated}`}
+          </p>
+          <p class="text-gray-700 line-clamp-2">{article.frontmatter.summary}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</body>
 </html>
