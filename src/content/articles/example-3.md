@@ -1,5 +1,5 @@
 ---
-title: "Cloudflare Pagesへのデプロイテストで追加"
+title: "Cloudflare Pagesへのデプロイテストで追加 after secrets configured"
 published: "2025-11-29"
 summary: "Cloudflare Pagesを使用すると、静的サイトを無料で高速にホスティングできます。GitHubとの連携により、自動デプロイも簡単に設定できます。"
 ---
