@@ -15,6 +15,11 @@ Cloudflare Pagesは、Cloudflareが提供する静的サイトホスティング
 3. ビルド設定を行う
 4. 自動デプロイ完了
 
+- [ ] タスク1
+- [x] タスク2
+
+![代替テキスト](https://cdn.profile-image.st-hatena.com/users/kazukifu/profile.png?1754111151 "画像タイトル")
+
 ## メリット
 
 - 無料プランでも十分な機能
